@@ -484,6 +484,68 @@ textarea{resize:vertical;min-height:70px}
   #voice-btn{display:flex}
 }
 
+
+/* ─── MOBILE LANDING FIXES ─── */
+/* Make landing page scrollable on mobile */
+@media(max-width:768px){
+  #landing{overflow-y:auto;-webkit-overflow-scrolling:touch;display:block !important}
+  .land-hero{
+    min-height:100svh;min-height:100vh;
+    overflow:visible !important;
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  }
+  .land-hero img{position:fixed !important;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .land-overlay{position:fixed !important;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+  .land-content{position:relative;z-index:2;width:100%;padding:50px 16px 30px}
+  .land-btns{position:relative;z-index:10;margin-top:16px;flex-direction:column;align-items:center;gap:12px}
+  .land-btn{
+    width:100% !important;max-width:300px;padding:18px 20px !important;
+    font-size:16px !important;letter-spacing:1px;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+    cursor:pointer;
+  }
+  .land-btn-primary{
+    box-shadow:0 8px 30px rgba(212,168,67,.5) !important;
+    min-height:56px;
+  }
+  /* Hide mobile nav on landing page */
+  body.on-landing #mob-nav{display:none !important}
+  /* Species cards row — horizontal scroll on mobile */
+  .land-species{
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:0 4px 8px;
+    justify-content:flex-start;
+    scrollbar-width:none;
+    gap:10px;
+  }
+  .land-species::-webkit-scrollbar{display:none}
+  .land-species-card{flex-shrink:0;width:130px}
+  /* Land bottom stats */
+  .land-bottom{
+    position:relative;z-index:2;
+    grid-template-columns:1fr 1fr !important;
+    gap:14px;
+    padding:24px 16px;
+  }
+  .land-stat-num{font-size:22px}
+  /* Species showcase section */
+  #species-showcase{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-bottom:8px;
+    gap:16px;
+    justify-content:flex-start;
+  }
+  #species-showcase > div{flex-shrink:0}
+}
+
 </style>
 </head>
 <body>
@@ -497,40 +559,171 @@ textarea{resize:vertical;min-height:70px}
     <div class="land-overlay"></div>
     <div class="land-content">
       <div class="land-logo" style="font-size:0;text-shadow:none;letter-spacing:0;line-height:1">
-        <svg viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg" overflow="visible" style="display:block;margin:0 auto;max-width:240px;width:100%;filter:drop-shadow(0 0 20px rgba(201,168,76,.25))">
-          <!-- Texas state outline (gold) -->
-          <path d="M18,75 L165,75 L165,130 L238,133 L260,132 L268,140 L274,166 L275,198 L270,230 L263,253 L250,272 L234,283 L212,293 L190,299 L168,306 L148,303 L133,294 L118,283 L104,268 L90,250 L77,230 L65,208 L53,188 L44,170 L40,160 L18,160 Z" fill="none" stroke="rgba(201,168,76,0.55)" stroke-width="2.5" stroke-linejoin="round"/>
-          <!-- Blackbuck — top center, spiral horns -->
-          <ellipse cx="150" cy="58" rx="18" ry="11" fill="#c9a84c"/>
-          <path d="M163,50 Q170,42 172,41" stroke="#c9a84c" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <ellipse cx="174" cy="39" rx="8" ry="7" fill="#c9a84c"/>
-          <path d="M177,33 C188,22 192,12 184,6 C174,0 165,8 169,17" stroke="#c9a84c" stroke-width="2.5" fill="none"/>
-          <path d="M176,34 C184,24 187,15 181,11" stroke="#c9a84c" stroke-width="2" fill="none"/>
-          <line x1="140" y1="68" x2="138" y2="82" stroke="#c9a84c" stroke-width="2.5"/><line x1="147" y1="69" x2="146" y2="83" stroke="#c9a84c" stroke-width="2.5"/><line x1="155" y1="69" x2="156" y2="83" stroke="#c9a84c" stroke-width="2.5"/><line x1="162" y1="68" x2="163" y2="82" stroke="#c9a84c" stroke-width="2.5"/>
-          <!-- Whitetail buck — left, large rack, facing right -->
-          <ellipse cx="60" cy="163" rx="22" ry="14" fill="#c9a84c"/>
-          <path d="M77,154 Q84,145 87,144" stroke="#c9a84c" stroke-width="7" fill="none" stroke-linecap="round"/>
-          <ellipse cx="89" cy="143" rx="9" ry="8" fill="#c9a84c"/>
-          <path d="M90,136 L88,122 M88,122 L84,114 M84,114 L80,108 M88,122 L93,116 M93,116 L89,110 M93,116 L97,112 M90,136 L94,125 M94,125 L91,117 M94,125 L99,120" stroke="#c9a84c" stroke-width="2" fill="none"/>
-          <line x1="48" y1="176" x2="46" y2="193" stroke="#c9a84c" stroke-width="3"/><line x1="57" y1="176" x2="56" y2="193" stroke="#c9a84c" stroke-width="3"/><line x1="67" y1="176" x2="68" y2="193" stroke="#c9a84c" stroke-width="3"/><line x1="76" y1="176" x2="78" y2="193" stroke="#c9a84c" stroke-width="3"/>
-          <!-- Smaller deer — center-right -->
-          <ellipse cx="208" cy="163" rx="16" ry="11" fill="#c9a84c"/>
-          <path d="M219,155 Q225,148 227,147" stroke="#c9a84c" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-          <ellipse cx="229" cy="146" rx="7" ry="6" fill="#c9a84c"/>
-          <path d="M230,140 L229,130 M229,130 L226,123 M229,130 L233,125" stroke="#c9a84c" stroke-width="1.8" fill="none"/>
-          <line x1="199" y1="173" x2="198" y2="187" stroke="#c9a84c" stroke-width="2.5"/><line x1="207" y1="173" x2="206" y2="187" stroke="#c9a84c" stroke-width="2.5"/><line x1="214" y1="173" x2="215" y2="187" stroke="#c9a84c" stroke-width="2.5"/><line x1="221" y1="173" x2="223" y2="187" stroke="#c9a84c" stroke-width="2.5"/>
-          <!-- Resting fallow deer — far right, lying down, head raised -->
-          <ellipse cx="262" cy="188" rx="22" ry="9" fill="#c9a84c"/>
-          <path d="M277,180 Q282,172 284,171" stroke="#c9a84c" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <ellipse cx="286" cy="169" rx="7" ry="6" fill="#c9a84c"/>
-          <path d="M287,164 L285,153 M285,153 L281,146 M285,153 L289,148 M289,148 L293,143" stroke="#c9a84c" stroke-width="1.8" fill="none"/>
-          <line x1="249" y1="196" x2="247" y2="205" stroke="#c9a84c" stroke-width="3"/><line x1="262" y1="196" x2="261" y2="205" stroke="#c9a84c" stroke-width="3"/>
-          <!-- TANC — bold forest green -->
-          <text x="152" y="236" text-anchor="middle" font-family="'Cinzel','Georgia',serif" font-weight="900" font-size="66" fill="#3d9e26">TANC</text>
-          <!-- EXOTICS &amp; WHITETAILS -->
-          <text x="152" y="264" text-anchor="middle" font-family="'Cinzel','Georgia',serif" font-weight="700" font-size="18" fill="#3d9e26" letter-spacing="1">EXOTICS &amp; WHITETAILS</text>
-        </svg>
-      </div>
+  <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" overflow="visible"
+       style="display:block;margin:0 auto;max-width:300px;width:100%;filter:drop-shadow(0 2px 16px rgba(0,0,0,.6))">
+    <defs>
+      <filter id="glow-logo"><feGaussianBlur stdDeviation="2" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    </defs>
+
+    <!-- ── TEXAS STATE OUTLINE ── -->
+    <!-- Panhandle top edge, main body, gulf coast, boot toe/heel -->
+    <path d="
+      M 95,28  L 95,100
+      L 55,100 L 55,148
+      L 72,148 L 72,162
+      L 78,168 L 84,175
+      L 86,185 L 84,198
+      L 78,212 L 70,225
+      L 60,238 L 52,248
+      L 46,258 L 42,268
+      L 40,278 L 42,288
+      L 48,298 L 56,306
+      L 66,314 L 76,320
+      L 88,325 L 100,330
+      L 112,333 L 126,334
+      L 138,332 L 150,328
+      L 162,322 L 172,316
+      L 182,308 L 192,298
+      L 200,286 L 208,272
+      L 214,258 L 218,244
+      L 222,230 L 224,216
+      L 228,202 L 234,190
+      L 242,180 L 252,174
+      L 264,170 L 276,168
+      L 288,168 L 300,166
+      L 310,162 L 316,156
+      L 320,148 L 322,140
+      L 322,132 L 318,124
+      L 312,118 L 304,114
+      L 296,112 L 286,112
+      L 276,110 L 270,106
+      L 266,100 L 265,92
+      L 266,84  L 270,76
+      L 276,70  L 280,64
+      L 282,56  L 280,48
+      L 276,42  L 270,36
+      L 260,30  L 248,26
+      L 236,24  L 222,24
+      L 210,24  L 198,24
+      L 186,24  L 172,26
+      L 158,28  L 144,28
+      L 130,28  L 116,28 Z"
+      fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="3.5"
+      stroke-linejoin="round" stroke-linecap="round"/>
+
+    <!-- ── BLACKBUCK (top, on panhandle) – spiral horns, long legs ── -->
+    <g transform="translate(178,10) scale(0.82)">
+      <!-- body -->
+      <ellipse cx="22" cy="28" rx="20" ry="11" fill="white"/>
+      <!-- neck -->
+      <path d="M36,22 Q44,14 46,12" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <!-- head -->
+      <ellipse cx="50" cy="10" rx="9" ry="7" fill="white"/>
+      <!-- spiral horn (left) -->
+      <path d="M52,4 C62,-6 70,-12 66,-20 C62,-28 52,-24 54,-16 C56,-10 64,-8 64,-16"
+            stroke="white" stroke-width="2.2" fill="none"/>
+      <!-- spiral horn (right) -->
+      <path d="M56,3 C68,-4 74,-10 70,-20 C66,-28 56,-26 58,-18"
+            stroke="white" stroke-width="2" fill="none"/>
+      <!-- front legs -->
+      <line x1="14" y1="36" x2="11" y2="54" stroke="white" stroke-width="3.5"/>
+      <line x1="20" y1="37" x2="18" y2="55" stroke="white" stroke-width="3.5"/>
+      <!-- back legs -->
+      <line x1="28" y1="37" x2="26" y2="55" stroke="white" stroke-width="3.5"/>
+      <line x1="34" y1="36" x2="33" y2="54" stroke="white" stroke-width="3.5"/>
+      <!-- tail -->
+      <path d="M4,24 Q-2,20 -4,22" stroke="white" stroke-width="3" fill="none"/>
+    </g>
+
+    <!-- ── WHITETAIL BUCK (left, standing, large rack) ── -->
+    <g transform="translate(44,145) scale(0.9)">
+      <!-- body -->
+      <ellipse cx="28" cy="34" rx="26" ry="15" fill="white"/>
+      <!-- neck -->
+      <path d="M46,24 Q56,14 58,13" stroke="white" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <!-- head -->
+      <ellipse cx="63" cy="11" rx="10" ry="8" fill="white"/>
+      <!-- left main beam (up + split) -->
+      <path d="M60,4 L58,-8 L54,-20 M58,-8 L62,-18 M54,-20 L50,-30 M54,-20 L56,-32"
+            stroke="white" stroke-width="2.2" fill="none"/>
+      <!-- right main beam -->
+      <path d="M66,4 L68,-8 L72,-20 M68,-8 L64,-18 M72,-20 L76,-30 M72,-20 L70,-32"
+            stroke="white" stroke-width="2.2" fill="none"/>
+      <!-- brow tines -->
+      <path d="M62,2 L68,-4" stroke="white" stroke-width="1.8" fill="none"/>
+      <!-- front legs -->
+      <line x1="18" y1="47" x2="14" y2="68" stroke="white" stroke-width="4"/>
+      <line x1="26" y1="48" x2="22" y2="70" stroke="white" stroke-width="4"/>
+      <!-- back legs -->
+      <line x1="36" y1="47" x2="33" y2="68" stroke="white" stroke-width="4"/>
+      <line x1="44" y1="46" x2="42" y2="68" stroke="white" stroke-width="4"/>
+      <!-- tail up -->
+      <path d="M4,26 Q-2,20 -4,14" stroke="white" stroke-width="3.5" fill="none"/>
+    </g>
+
+    <!-- ── SMALLER DEER – center-right (walking, head down slightly) ── -->
+    <g transform="translate(220,148) scale(0.78)">
+      <!-- body -->
+      <ellipse cx="22" cy="30" rx="20" ry="12" fill="white"/>
+      <!-- neck -->
+      <path d="M36,22 Q43,15 46,14" stroke="white" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <!-- head -->
+      <ellipse cx="50" cy="12" rx="8" ry="7" fill="white"/>
+      <!-- small rack -->
+      <path d="M50,6 L48,-4 L44,-12 M48,-4 L52,-10" stroke="white" stroke-width="1.9" fill="none"/>
+      <path d="M54,5 L56,-5 L60,-12" stroke="white" stroke-width="1.9" fill="none"/>
+      <!-- legs (walking – staggered) -->
+      <line x1="12" y1="40" x2="8" y2="58" stroke="white" stroke-width="3.5"/>
+      <line x1="20" y1="41" x2="22" y2="60" stroke="white" stroke-width="3.5"/>
+      <line x1="28" y1="40" x2="26" y2="58" stroke="white" stroke-width="3.5"/>
+      <line x1="36" y1="40" x2="38" y2="58" stroke="white" stroke-width="3.5"/>
+    </g>
+
+    <!-- ── RESTING DEER – far right (lying, head raised, antlers) ── -->
+    <g transform="translate(288,182) scale(0.78)">
+      <!-- body (elongated horizontal) -->
+      <ellipse cx="26" cy="24" rx="28" ry="12" fill="white"/>
+      <!-- neck / head raised -->
+      <path d="M44,16 Q52,8 54,7" stroke="white" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <ellipse cx="58" cy="5" rx="8" ry="6" fill="white"/>
+      <!-- antlers -->
+      <path d="M57,-1 L54,-12 L50,-20 M54,-12 L58,-18"
+            stroke="white" stroke-width="1.9" fill="none"/>
+      <path d="M61,-2 L64,-13 L68,-20 M64,-13 L60,-18"
+            stroke="white" stroke-width="1.9" fill="none"/>
+      <!-- tucked front legs -->
+      <line x1="8"  y1="34" x2="6"  y2="44" stroke="white" stroke-width="3.2"/>
+      <line x1="16" y1="35" x2="15" y2="45" stroke="white" stroke-width="3.2"/>
+      <!-- tucked back legs -->
+      <line x1="36" y1="34" x2="34" y2="44" stroke="white" stroke-width="3.2"/>
+      <line x1="44" y1="34" x2="43" y2="44" stroke="white" stroke-width="3.2"/>
+    </g>
+
+    <!-- ── TANC TEXT ── -->
+    <text x="210" y="302"
+          text-anchor="middle"
+          font-family="'Impact','Arial Black','Cinzel',sans-serif"
+          font-weight="900"
+          font-size="94"
+          fill="#2d8a18"
+          paint-order="stroke"
+          stroke="#1a5c0e"
+          stroke-width="2">TANC</text>
+
+    <!-- ── EXOTICS &amp; WHITETAILS TEXT ── -->
+    <text x="210" y="338"
+          text-anchor="middle"
+          font-family="'Impact','Arial Black','Cinzel',sans-serif"
+          font-weight="900"
+          font-size="26"
+          fill="#2d8a18"
+          letter-spacing="1"
+          paint-order="stroke"
+          stroke="#1a5c0e"
+          stroke-width="1.5">EXOTICS &amp; WHITETAILS</text>
+  </svg>
+</div>
       <div class="land-tagline">Exotics &amp; Whitetails · Texas, USA</div>
       <div class="land-sub">Raising the Standard in Exotic Wildlife · Est. 2024</div>
       <div class="land-divider"></div>
@@ -1274,6 +1467,7 @@ function doLogin(){
 }
 
 function doLogout(){
+  document.body.classList.add('on-landing');
   currentUser=null;DB.setObj('session',null);
   document.getElementById('app').style.display='none';
   document.getElementById('landing').style.display='flex';
@@ -1282,6 +1476,7 @@ function doLogout(){
 }
 
 function showLogin(){
+  document.body.classList.remove('on-landing');
   document.getElementById('login-screen').style.display='flex';
   document.getElementById('login-user').focus();
 }
@@ -1294,6 +1489,7 @@ function showApp(){
   document.getElementById('user-av').textContent=currentUser.avatar||'👤';
   document.getElementById('user-nm').textContent=currentUser.name;
   document.getElementById('user-rl').textContent=currentUser.role.charAt(0).toUpperCase()+currentUser.role.slice(1);
+    document.body.classList.remove('on-landing');
   const mu=document.getElementById('mob-username');if(mu)mu.textContent=currentUser.name;
   // back office visibility
   const bo=document.getElementById('backoffice-nav');
@@ -1301,7 +1497,18 @@ function showApp(){
   nav('dashboard');
 }
 
-function scrollToInfo(){document.getElementById('land-info').scrollIntoView({behavior:'smooth'});}
+function scrollToInfo(){
+  const el=document.getElementById('land-info');
+  if(!el)return;
+  const landing=document.getElementById('landing');
+  if(window.innerWidth<=768&&landing){
+    // Scroll within the fixed landing page element on mobile
+    const top=el.getBoundingClientRect().top-landing.getBoundingClientRect().top+landing.scrollTop;
+    landing.scrollTo({top:top-20,behavior:'smooth'});
+  } else {
+    el.scrollIntoView({behavior:'smooth'});
+  }
+}
 
 // ══════════════════════════════════
 // SEED DATA
@@ -2064,6 +2271,7 @@ function mobNav(page){
 // ══════════════════════════════════
 seedData();
 renderLanding();
+document.body.classList.add('on-landing');
 const _s=DB.getObj('session');
 if(_s){currentUser=_s;showApp();}
 
