@@ -2169,6 +2169,12 @@ renderLanding();
 document.body.classList.add('on-landing');
 const _s=DB.getObj('session');
 if(_s){currentUser=_s;showApp();}
+else if(window.innerWidth<=768){
+  // Mobile: skip landing, go straight to login
+  document.getElementById('landing').style.display='none';
+  document.body.classList.remove('on-landing');
+  document.getElementById('login-screen').style.display='flex';
+}
 
 // ══════════════════════════════════
 // VOICE TO TEXT
