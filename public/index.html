@@ -76,6 +76,34 @@ body::after{display:none}
 .land-btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px var(--goldglow)}
 .land-btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2)}
 .land-btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ─── CORNER LOGIN BUTTON ─── */
+#corner-login-btn{
+  position:fixed;top:20px;right:20px;z-index:9999;
+  background:rgba(10,12,8,.75);
+  border:1px solid rgba(212,168,67,.45);
+  border-radius:10px;
+  padding:11px 20px;
+  color:var(--gold);
+  font-family:'Cinzel',serif;
+  font-size:12px;font-weight:700;letter-spacing:2px;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:all .25s;
+  text-transform:uppercase;
+  display:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  -webkit-user-select:none;
+}
+#corner-login-btn:hover,#corner-login-btn:active{
+  background:rgba(212,168,67,.18);
+  border-color:var(--gold);
+  box-shadow:0 4px 22px rgba(212,168,67,.35);
+}
+body.on-landing #corner-login-btn{display:block}
 .land-bottom{background:rgba(7,9,8,.95);border-top:1px solid var(--border);padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
 .land-stat-num{font-family:'Cinzel',serif;font-size:32px;color:var(--gold);text-shadow:0 0 20px var(--goldglow)}
 .land-stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
@@ -605,6 +633,7 @@ textarea{resize:vertical;min-height:70px}
 <!-- ══════════════════════════════════════
      LANDING PAGE
 ══════════════════════════════════════ -->
+<button id="corner-login-btn" onclick="showLogin()">🔐 Login</button>
 <div id="landing">
   <div class="land-hero" id="hero-bg">
     
@@ -619,11 +648,6 @@ textarea{resize:vertical;min-height:70px}
       <div class="land-sub">Raising the Standard in Exotic Wildlife · Est. 2024</div>
       <div class="land-divider"></div>
       <div class="land-species" id="land-species-cards"></div>
-      <div class="land-divider"></div>
-      <div class="land-btns">
-        <a class="land-btn land-btn-primary" href="javascript:void(0)" onclick="showLogin();return false;" role="button">🔐 Enter Portal</a>
-        <a class="land-btn land-btn-ghost" href="javascript:void(0)" onclick="scrollToInfo();return false;" role="button">Learn More ↓</a>
-      </div>
     </div>
   </div>
   <div class="land-bottom" id="land-info">
@@ -2169,12 +2193,7 @@ renderLanding();
 document.body.classList.add('on-landing');
 const _s=DB.getObj('session');
 if(_s){currentUser=_s;showApp();}
-else if(window.innerWidth<=768){
-  // Mobile: skip landing, go straight to login
-  document.getElementById('landing').style.display='none';
-  document.body.classList.remove('on-landing');
-  document.getElementById('login-screen').style.display='flex';
-}
+// All devices: show landing with corner login button — no overlay buttons
 
 // ══════════════════════════════════
 // VOICE TO TEXT
