@@ -486,35 +486,42 @@ textarea{resize:vertical;min-height:70px}
 
 
 /* ─── MOBILE LANDING FIXES ─── */
-/* Make landing page scrollable on mobile */
 @media(max-width:768px){
-  #landing{overflow-y:auto;-webkit-overflow-scrolling:touch;display:block !important}
+  /* Lock body scroll on landing so touches don't bleed through */
+  body.on-landing{overflow:hidden !important}
+  #landing{
+    position:fixed !important;inset:0 !important;
+    overflow-y:scroll !important;
+    -webkit-overflow-scrolling:touch !important;
+    display:block !important;
+    z-index:500 !important;
+    touch-action:pan-y !important;
+  }
   .land-hero{
     min-height:100svh;min-height:100vh;
-    overflow:visible !important;
-    position:relative;
-    display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+    overflow:visible !important;position:relative !important;
+    display:flex !important;flex-direction:column !important;
+    align-items:center !important;justify-content:flex-start !important;
   }
-  #hero-bg{
-    background-position: center 40% !important;
-    background-size: cover !important;
-  }
-  /* land-hero uses CSS background-image */
+  #hero-bg{background-position:center 40% !important;background-size:cover !important}
   .land-overlay{position:absolute;inset:0;pointer-events:none;z-index:2}
-  .land-content{position:relative;z-index:2;width:100%;padding:50px 16px 30px}
-  .land-btns{position:relative;z-index:10;margin-top:16px;flex-direction:column;align-items:center;gap:12px}
+  .land-content{position:relative;z-index:5;width:100%;padding:50px 16px 30px}
+  .land-btns{
+    position:relative !important;z-index:20 !important;
+    margin-top:16px;flex-direction:column;align-items:center;gap:12px;
+    pointer-events:all !important;
+  }
   .land-btn{
     width:100% !important;max-width:300px;padding:18px 20px !important;
     font-size:16px !important;letter-spacing:1px;
-    -webkit-tap-highlight-color:transparent;
-    touch-action:manipulation;
-    cursor:pointer;
+    -webkit-tap-highlight-color:transparent !important;
+    touch-action:manipulation !important;
+    cursor:pointer !important;position:relative !important;
+    z-index:20 !important;pointer-events:all !important;
+    display:flex !important;align-items:center;justify-content:center;
   }
-  .land-btn-primary{
-    box-shadow:0 8px 30px rgba(212,168,67,.5) !important;
-    min-height:56px;
-  }
-  /* Hide mobile nav on landing page */
+  .land-btn-primary{box-shadow:0 8px 30px rgba(212,168,67,.5) !important;min-height:56px}
+    /* Hide mobile nav on landing page */
   body.on-landing #mob-nav{display:none !important}
   /* Species cards row — horizontal scroll on mobile */
   .land-species{
@@ -1344,8 +1351,7 @@ function doLogout(){
   document.body.classList.add('on-landing');
   currentUser=null;DB.setObj('session',null);
   document.getElementById('app').style.display='none';
-  document.getElementById('landing').style.display='flex';
-  document.getElementById('landing').style.flexDirection='column';
+  const _ld=document.getElementById('landing');_ld.style.display='';_ld.style.flexDirection='';
   closeMobSheet();
 }
 
