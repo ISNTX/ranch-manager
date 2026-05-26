@@ -61,7 +61,7 @@ body::after{display:none}
 .icon{display:inline-block;transition:filter .2s;font-style:normal;font-size:16px;width:22px;text-align:center}
 
 /* ─── LANDING ─── */
-#landing{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column}
+#landing{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .land-hero{position:relative;flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .land-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .land-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,8,4,.45) 0%,rgba(5,8,4,.6) 50%,rgba(5,8,4,.95) 100%);pointer-events:none;z-index:2}
@@ -154,7 +154,7 @@ body.on-landing #corner-login-btn{display:block}
 .nav-item.active{background:linear-gradient(90deg,rgba(212,168,67,.12),transparent);color:var(--gold);border-left-color:var(--gold)}
 .nav-badge{margin-left:auto;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-size:9px;font-weight:800;padding:2px 6px;border-radius:10px}
 .nav-sep{height:1px;background:var(--border);margin:8px 14px}
-#main-content{margin-left:235px;flex:1;min-height:100vh}
+#main-content{margin-left:235px;flex:1;min-height:100vh;-webkit-overflow-scrolling:touch}
 .page{display:none;flex-direction:column;min-height:100vh}
 .page.active{display:flex}
 
@@ -330,7 +330,7 @@ textarea{resize:vertical;min-height:70px}
 /* ─── MODAL ─── */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}
 .modal-ov.open{display:flex}
-.modal{background:linear-gradient(145deg,rgba(14,18,9,.98),rgba(9,12,6,.99));border:1px solid var(--border2);border-radius:15px;max-width:660px;width:100%;max-height:92vh;overflow-y:auto;padding:28px;box-shadow:0 22px 70px rgba(0,0,0,.8);position:relative}
+.modal{background:linear-gradient(145deg,rgba(14,18,9,.98),rgba(9,12,6,.99));border:1px solid var(--border2);border-radius:15px;max-width:660px;width:100%;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:28px;box-shadow:0 22px 70px rgba(0,0,0,.8);position:relative}
 .modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .mt{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--gold);text-shadow:0 0 14px var(--goldglow)}
@@ -349,7 +349,7 @@ textarea{resize:vertical;min-height:70px}
 
 /* ─── MOBILE BOTTOM NAV ─── */
 #mob-nav{position:fixed;bottom:0;left:0;right:0;z-index:150;display:none;flex-direction:column}
-#mob-nav-bar{display:flex;background:rgba(7,9,5,.98);border-top:1px solid var(--border2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);safe-area-inset-bottom:env(safe-area-inset-bottom)}
+#mob-nav-bar{display:flex;background:rgba(7,9,5,.98);border-top:1px solid var(--border2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding-bottom:env(safe-area-inset-bottom,0px)}
 .mob-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px 13px;cursor:pointer;color:var(--text3);transition:color .15s;-webkit-tap-highlight-color:transparent;gap:3px;min-height:56px;position:relative}
 .mob-tab.active{color:var(--gold)}
 .mob-tab.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--gold);border-radius:0 0 2px 2px}
@@ -357,7 +357,7 @@ textarea{resize:vertical;min-height:70px}
 .mob-tab-lbl{font-size:8.5px;text-transform:uppercase;letter-spacing:.4px;font-family:'Cinzel',serif}
 #mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:148;opacity:0;pointer-events:none;transition:opacity .3s}
 #mob-overlay.open{opacity:1;pointer-events:all}
-#mob-sheet{position:fixed;bottom:-100%;left:0;right:0;background:linear-gradient(170deg,rgba(12,16,8,.99),rgba(7,9,5,1));border:1px solid var(--border2);border-bottom:none;border-radius:22px 22px 0 0;padding:6px 16px 80px;transition:bottom .35s cubic-bezier(.4,0,.2,1);z-index:149;max-height:80vh;overflow-y:auto}
+#mob-sheet{position:fixed;bottom:-100%;left:0;right:0;background:linear-gradient(170deg,rgba(12,16,8,.99),rgba(7,9,5,1));border:1px solid var(--border2);border-bottom:none;border-radius:22px 22px 0 0;padding:6px 16px calc(80px + env(safe-area-inset-bottom,0px));transition:bottom .35s cubic-bezier(.4,0,.2,1);z-index:149;max-height:80vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #mob-sheet.open{bottom:0}
 .mob-handle{width:38px;height:4px;background:rgba(201,168,76,.3);border-radius:2px;margin:8px auto 16px}
 .mob-sheet-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
@@ -382,20 +382,24 @@ textarea{resize:vertical;min-height:70px}
   .land-stat-num{font-size:24px}
 
   /* ── Login ── */
-  .login-box{padding:26px 20px;width:96vw;border-radius:16px}
+  #login-screen{align-items:flex-start !important;padding:20px 0;overflow-y:auto}
+  .login-box{padding:26px 20px;width:96vw;border-radius:16px;margin:auto}
   .login-deer{height:90px}
   .login-logo{font-size:26px;letter-spacing:4px}
 
   /* ── App layout ── */
   #sidebar{display:none !important}
-  #main-content{margin-left:0 !important;padding-bottom:74px}
+  #main-content{margin-left:0 !important;padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
   #mob-nav{display:flex}
+  /* ── Voice btn above safe area ── */
+  #voice-btn{bottom:calc(74px + env(safe-area-inset-bottom,0px)) !important}
 
   /* ── Page hero ── */
   .page-hero{height:100px;padding:12px 16px}
   .page-title{font-size:16px;letter-spacing:.5px}
   .page-sub{font-size:10.5px}
-  .page-hero-action{display:none}
+  .page-hero-action{display:flex !important;align-items:flex-end;margin-left:auto;flex-shrink:0}
+  .page-hero-action .btn{font-size:11px !important;padding:6px 11px !important;min-height:34px !important;letter-spacing:.3px;white-space:nowrap}
   .page-body{padding:11px 13px 28px}
 
   /* ── Stats ── */
@@ -472,7 +476,7 @@ textarea{resize:vertical;min-height:70px}
 
   /* ── Modals — sheet from bottom ── */
   .modal-ov{align-items:flex-end !important;padding:0 !important}
-  .modal{max-width:100% !important;width:100% !important;margin:0 !important;border-radius:20px 20px 0 0 !important;border-bottom:none !important;max-height:90vh !important;padding:20px 16px 32px !important}
+  .modal{max-width:100% !important;width:100% !important;margin:0 !important;border-radius:20px 20px 0 0 !important;border-bottom:none !important;max-height:90vh !important;padding:20px 16px calc(28px + env(safe-area-inset-bottom,0px)) !important}
 
   /* ── Toast — top on mobile ── */
   #toasts{bottom:auto !important;top:14px;left:12px;right:12px}
@@ -2308,6 +2312,8 @@ function toggleVoice(){
       <div class="mob-item" onclick="mobNav('training')"><div class="mob-item-ico">🎓</div><div class="mob-item-lbl">Training</div></div>
       <div class="mob-item" onclick="mobNav('documents')"><div class="mob-item-ico">📄</div><div class="mob-item-lbl">Documents</div></div>
       <div class="mob-item" onclick="mobNav('compliance')"><div class="mob-item-ico">🛡️</div><div class="mob-item-lbl">Compliance</div></div>
+      <div class="mob-item" onclick="mobNav('reports')"><div class="mob-item-ico">📊</div><div class="mob-item-lbl">Reports</div></div>
+      <div class="mob-item" onclick="mobNav('simulate')"><div class="mob-item-ico">✨</div><div class="mob-item-lbl">Simulate</div></div>
     </div>
     <div style="padding:4px 0 8px;display:flex;align-items:center;gap:8px">
       <div style="font-family:'Cinzel',serif;font-size:10px;color:var(--text3)">Signed in as <span id="mob-username" style="color:var(--gold)">—</span></div>
