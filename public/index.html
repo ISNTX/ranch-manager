@@ -17,6 +17,7 @@
 }
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+@media(max-width:768px){body.on-landing::after{display:none!important}}
 
 /* ─── ICON ANIMATIONS ─── */
 @keyframes trot{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-4px) rotate(5deg)}60%{transform:translateY(-2px) rotate(-3deg)}}
@@ -79,7 +80,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .land-stat-num{font-family:'Cinzel',serif;font-size:32px;color:var(--gold);text-shadow:0 0 20px var(--goldglow)}
 .land-stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
 .land-species{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:2}
-.land-species-card{background:rgba(14,18,10,.7);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;width:180px;text-align:center;backdrop-filter:blur(10px);transition:all .3s;cursor:pointer}
+.land-species-card{cursor:pointer;background:rgba(14,18,10,.7);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;width:180px;text-align:center;backdrop-filter:blur(10px);transition:all .3s;cursor:pointer}
 .land-species-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .land-species-card img{width:100%;height:110px;object-fit:cover}
 .land-species-name{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);padding:10px;letter-spacing:1px}
@@ -345,7 +346,7 @@ textarea{resize:vertical;min-height:70px}
   .land-content{padding:20px 16px}
   .land-sub{font-size:11px;letter-spacing:1.5px}
   .land-species{gap:10px}
-  .land-species-card{width:130px}
+  .land-species-card{cursor:pointer;width:130px}
   .land-species-card img{height:88px}
   .land-btns{flex-direction:column;align-items:center;gap:10px}
   .land-btn{width:100%;max-width:280px;text-align:center;justify-content:center;display:block}
@@ -454,7 +455,7 @@ textarea{resize:vertical;min-height:70px}
 }
 
 @media(max-width:390px){
-  .land-species-card{width:115px}
+  .land-species-card{cursor:pointer;width:115px}
   .gal-grid{grid-template-columns:1fr}
   .mob-grid{grid-template-columns:repeat(3,1fr)}
   .stat-num{font-size:20px}
@@ -544,7 +545,7 @@ textarea{resize:vertical;min-height:70px}
     gap:10px;
   }
   .land-species::-webkit-scrollbar{display:none}
-  .land-species-card{flex-shrink:0;width:130px}
+  .land-species-card{cursor:pointer;flex-shrink:0;width:130px}
   /* Land bottom stats */
   .land-bottom{
     position:relative;z-index:2;
@@ -621,8 +622,8 @@ textarea{resize:vertical;min-height:70px}
       <div class="land-species" id="land-species-cards"></div>
       <div class="land-divider"></div>
       <div class="land-btns">
-        <button class="land-btn land-btn-primary" onclick="showLogin()" ontouchstart="showLogin()">🔐 Enter Portal</button>
-        <button class="land-btn land-btn-ghost" onclick="scrollToInfo()" ontouchstart="this._t=Date.now()" ontouchend="if(Date.now()-this._t<300)scrollToInfo()">Learn More ↓</button>
+        <a class="land-btn land-btn-primary" href="javascript:void(0)" onclick="showLogin();return false;" role="button">🔐 Enter Portal</a>
+        <a class="land-btn land-btn-ghost" href="javascript:void(0)" onclick="scrollToInfo();return false;" role="button">Learn More ↓</a>
       </div>
     </div>
   </div>
