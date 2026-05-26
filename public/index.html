@@ -487,49 +487,60 @@ textarea{resize:vertical;min-height:70px}
 
 /* ─── MOBILE LANDING FIXES ─── */
 @media(max-width:768px){
-  /* On mobile: landing uses normal document flow — no fixed+overflow combo
-     which swallows iOS touch events. Body is locked while on landing. */
-  body.on-landing{
-    overflow:hidden !important;
-    position:fixed !important;
-    width:100% !important;
-    height:100% !important;
-  }
+  /* #landing stays position:fixed (it's a full-screen overlay) —
+     NO overflow:scroll on it (that kills iOS touch events).
+     Scroll lock is done via html{overflow:hidden} in JS instead. */
   #landing{
-    position:relative !important;
-    width:100vw !important;
-    min-height:100vh !important;
-    overflow:visible !important;
+    overflow:hidden !important;
     display:block !important;
-    z-index:1 !important;
   }
   .land-hero{
+    height:100svh;height:100vh;
     min-height:100svh;min-height:100vh;
-    overflow:visible !important;
+    overflow:hidden !important;
     position:relative !important;
-    display:flex !important;flex-direction:column !important;
-    align-items:center !important;justify-content:flex-start !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
   }
   #hero-bg{background-position:center 40% !important;background-size:cover !important}
-  .land-overlay{position:absolute;inset:0;pointer-events:none;z-index:2}
-  .land-content{position:relative;z-index:5;width:100%;padding:50px 16px 30px}
+  .land-overlay{position:absolute;inset:0;pointer-events:none !important;z-index:2}
+  .land-content{
+    position:relative;z-index:5;
+    width:100%;padding:40px 20px 24px;
+    pointer-events:none;
+  }
+  /* Only the interactive elements get pointer-events */
+  .land-logo,.land-title,.land-sub,.land-divider{pointer-events:none}
   .land-btns{
-    position:relative !important;z-index:50 !important;
-    margin-top:16px;flex-direction:column;align-items:center;gap:12px;
     pointer-events:all !important;
+    position:relative !important;
+    z-index:100 !important;
+    margin-top:20px;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
   }
   .land-btn{
-    width:100% !important;max-width:300px;padding:18px 20px !important;
-    font-size:16px !important;letter-spacing:1px;
-    -webkit-tap-highlight-color:rgba(0,0,0,0) !important;
-    touch-action:manipulation !important;
-    cursor:pointer !important;
-    position:relative !important;z-index:50 !important;
     pointer-events:all !important;
-    display:flex !important;align-items:center;justify-content:center;
+    touch-action:manipulation !important;
+    -webkit-tap-highlight-color:rgba(0,0,0,0) !important;
+    cursor:pointer !important;
+    position:relative !important;
+    z-index:100 !important;
+    width:100% !important;
+    max-width:300px;
+    min-height:56px;
+    padding:16px 20px !important;
+    font-size:15px !important;
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
     -webkit-appearance:none;
+    border:none;
   }
-  .land-btn-primary{box-shadow:0 8px 30px rgba(212,168,67,.5) !important;min-height:56px}
+  .land-btn-primary{box-shadow:0 8px 30px rgba(212,168,67,.5) !important}
   /* Hide mobile nav on landing page */
   body.on-landing #mob-nav{display:none !important}
   /* Species cards row — horizontal scroll on mobile */
@@ -1358,6 +1369,7 @@ function doLogin(){
 
 function doLogout(){
   document.body.classList.add('on-landing');
+  document.documentElement.style.overflow='hidden';
   currentUser=null;DB.setObj('session',null);
   document.getElementById('app').style.display='none';
   const _ld=document.getElementById('landing');
@@ -1369,6 +1381,7 @@ function doLogout(){
 
 function showLogin(){
   document.body.classList.remove('on-landing');
+  document.documentElement.style.overflow='';
   document.getElementById('login-screen').style.display='flex';
   document.getElementById('login-user').focus();
 }
@@ -2162,28 +2175,11 @@ function mobNav(page){
 // INIT
 // ══════════════════════════════════
 
-// Mobile button touch listeners — belt-and-suspenders for iOS
-(function(){
-  function bindBtn(id, fn){
-    var el=document.getElementById(id);
-    if(!el)return;
-    el.addEventListener('touchend',function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});
-    el.addEventListener('click',fn);
-  }
-  // Bind after DOM ready
-  var portalBtn=document.querySelector('.land-btn-primary');
-  var learnBtn=document.querySelector('.land-btn-ghost');
-  if(portalBtn){
-    portalBtn.addEventListener('touchend',function(e){e.preventDefault();showLogin();},{passive:false});
-  }
-  if(learnBtn){
-    learnBtn.addEventListener('touchend',function(e){e.preventDefault();scrollToInfo();},{passive:false});
-  }
-})();
 
 seedData();
 renderLanding();
 document.body.classList.add('on-landing');
+document.documentElement.style.overflow='hidden';
 const _s=DB.getObj('session');
 if(_s){currentUser=_s;showApp();}
 
