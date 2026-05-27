@@ -382,10 +382,16 @@ textarea{resize:vertical;min-height:70px}
   .land-stat-num{font-size:24px}
 
   /* ── Login ── */
-  #login-screen{align-items:flex-start !important;padding:20px 0;overflow-y:auto}
-  .login-box{padding:26px 20px;width:96vw;border-radius:16px;margin:auto}
-  .login-deer{height:90px}
-  .login-logo{font-size:26px;letter-spacing:4px}
+  #login-screen{align-items:flex-start !important;padding:20px 0 40px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .login-box{padding:24px 18px 30px;width:96vw;border-radius:16px;margin:auto}
+  .login-deer{height:80px}
+  .login-logo{font-size:24px;letter-spacing:3px}
+  .login-sub{font-size:10px;margin-bottom:18px;padding-bottom:14px}
+  .login-btn{font-size:16px;padding:16px;min-height:52px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  .login-back{padding:14px 0;min-height:44px;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+  .login-field input{font-size:16px !important;padding:14px 16px !important}
+  .login-creds{font-size:12px;line-height:1.8}
+  .login-error{font-size:13px}
 
   /* ── App layout ── */
   #sidebar{display:none !important}
@@ -681,14 +687,14 @@ textarea{resize:vertical;min-height:70px}
     <div class="login-error" id="login-err">❌ Invalid username or password.</div>
     <div class="login-field">
       <label>Username</label>
-      <input type="text" id="login-user" placeholder="Enter your username" autocomplete="username">
+      <input type="text" id="login-user" placeholder="Enter your username" autocomplete="username" autocapitalize="none" autocorrect="off" autocomplete="username" spellcheck="false">
     </div>
     <div class="login-field">
       <label>Password</label>
-      <input type="password" id="login-pass" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+      <input type="password" id="login-pass" placeholder="Enter your password" autocomplete="current-password" autocorrect="off" autocapitalize="none" spellcheck="false" onkeydown="if(event.key==='Enter')doLogin()">
     </div>
-    <button class="login-btn" onclick="doLogin()">🔐 &nbsp;Sign In to Portal</button>
-    <div class="login-back" onclick="hideLogin()">← Back to Home</div>
+    <button class="login-btn" onclick="doLogin()" style="touch-action:manipulation;-webkit-tap-highlight-color:transparent">🔐 &nbsp;Sign In to Portal</button>
+    <div class="login-back" onclick="hideLogin()" style="touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer;padding:12px 0">← Back to Home</div>
     <div class="login-creds">
       <strong>Demo Accounts:</strong><br>
       👑 Admin: <strong>admin</strong> / <strong>tanc2024</strong><br>
@@ -1373,9 +1379,9 @@ function getUsers(){
 }
 
 function doLogin(){
-  const u=document.getElementById('login-user').value.trim();
-  const p=document.getElementById('login-pass').value;
-  const user=getUsers().find(x=>x.username===u&&x.password===p);
+  const u=document.getElementById('login-user').value.trim().toLowerCase();
+  const p=document.getElementById('login-pass').value.trim();
+  const user=getUsers().find(x=>x.username.toLowerCase()===u&&x.password===p);
   const err=document.getElementById('login-err');
   if(!user){err.style.display='block';return;}
   err.style.display='none';
