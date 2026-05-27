@@ -2117,7 +2117,7 @@ function renderTraining(){
       <div style="font-size:11px;color:var(--text3);margin-top:2px">${m.desc}</div>
       <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
       <div style="font-size:10px;color:var(--text3);margin-top:3px">${done}/${staff.length} staff completed</div>
-    </div>\`;
+    </div>`;
   }).join('');
   // Certifications
   const certs=training.filter(t=>t.status==='Completed'&&t.score>=80);
