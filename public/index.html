@@ -637,6 +637,110 @@ textarea{resize:vertical;min-height:70px}
   .land-logo img { max-width: 240px !important; width: 75% !important; }
 }
 
+
+/* ─── API SYNC INDICATOR ─── */
+#api-sync-dot{position:fixed;bottom:14px;left:14px;z-index:9000;width:9px;height:9px;border-radius:50%;background:#555;transition:background .4s;pointer-events:none}
+#api-sync-dot.online{background:#3a9050}
+#api-sync-dot.syncing{background:#d4a843;animation:pulse 1s infinite}
+#api-sync-dot.error{background:#b03020}
+
+/* ─── FINANCIALS ─── */
+.fin-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px}
+.fin-kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 16px;text-align:center}
+.fin-kpi-lbl{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.fin-kpi-val{font-size:24px;font-weight:700;color:var(--gold)}
+.fin-kpi-val.positive{color:var(--success)}
+.fin-kpi-val.negative{color:var(--red)}
+.fin-table{width:100%;border-collapse:collapse;font-size:13px}
+.fin-table th{text-align:left;padding:8px 10px;color:var(--text3);font-weight:500;border-bottom:1px solid var(--border);font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+.fin-table td{padding:9px 10px;border-bottom:1px solid rgba(180,148,50,.07);vertical-align:top}
+.fin-table tr:hover td{background:rgba(212,168,67,.04)}
+.fin-badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.5px}
+.fin-badge-income{background:rgba(58,144,80,.18);color:#6ecf8a}
+.fin-badge-expense{background:rgba(176,48,32,.18);color:#e08070}
+.fin-badge-sale{background:rgba(212,168,67,.18);color:var(--gold)}
+.fin-cat-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.fin-cat-pill{padding:5px 12px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid var(--border);color:var(--text2);transition:all .2s}
+.fin-cat-pill.active,.fin-cat-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,168,67,.08)}
+.fin-chart-bar-wrap{display:flex;flex-direction:column;gap:6px;margin:16px 0}
+.fin-bar-row{display:flex;align-items:center;gap:10px;font-size:12px}
+.fin-bar-lbl{width:80px;color:var(--text2);text-align:right;flex-shrink:0}
+.fin-bar-track{flex:1;height:14px;background:rgba(255,255,255,.06);border-radius:7px;overflow:hidden}
+.fin-bar-fill{height:100%;border-radius:7px;transition:width .6s ease}
+.fin-bar-fill.income{background:linear-gradient(90deg,#2a6840,#3a9050)}
+.fin-bar-fill.expense{background:linear-gradient(90deg,#7a2010,#b03020)}
+.fin-bar-val{width:70px;font-size:11px;color:var(--text3)}
+
+/* ─── SALES / AUCTIONS ─── */
+.sale-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.sale-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px;transition:border-color .2s}
+.sale-card:hover{border-color:var(--border2)}
+.sale-card-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.sale-animal-name{font-weight:600;font-size:15px;color:var(--text)}
+.sale-price{font-size:20px;font-weight:700;color:var(--gold)}
+.sale-meta{font-size:12px;color:var(--text3);margin-top:2px}
+.sale-details{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.sale-detail-item{font-size:12px}
+.sale-detail-label{color:var(--text3);font-size:10px;letter-spacing:.5px;text-transform:uppercase}
+.sale-detail-val{color:var(--text2);font-weight:500;margin-top:2px}
+.sale-status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600}
+.sale-status-sold{background:rgba(58,144,80,.2);color:#6ecf8a}
+.sale-status-pending{background:rgba(212,168,67,.2);color:var(--gold)}
+.sale-status-reserved{background:rgba(80,120,200,.2);color:#80a0e8}
+.sale-total-bar{display:flex;justify-content:space-between;background:var(--card2);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;margin-bottom:18px}
+.sale-total-item{text-align:center}
+.sale-total-lbl{font-size:10px;color:var(--text3);letter-spacing:.5px;text-transform:uppercase}
+.sale-total-num{font-size:20px;font-weight:700;color:var(--gold);margin-top:4px}
+
+/* ─── FEED MANAGEMENT ─── */
+.feed-inventory{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:22px}
+.feed-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;position:relative;overflow:hidden}
+.feed-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.feed-item.hay::before{background:linear-gradient(90deg,#a06820,#d4a843)}
+.feed-item.grain::before{background:linear-gradient(90deg,#604810,#a07830)}
+.feed-item.supplement::before{background:linear-gradient(90deg,#204870,#3070b0)}
+.feed-item.mineral::before{background:linear-gradient(90deg,#206040,#3a9050)}
+.feed-item-name{font-weight:600;font-size:14px;color:var(--text);margin-bottom:4px}
+.feed-item-qty{font-size:22px;font-weight:700;color:var(--gold);margin:8px 0}
+.feed-item-unit{font-size:11px;color:var(--text3)}
+.feed-level-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;margin-top:10px;overflow:hidden}
+.feed-level-fill{height:100%;border-radius:3px;transition:width .5s ease}
+.feed-level-fill.high{background:#3a9050}
+.feed-level-fill.med{background:#d4a843}
+.feed-level-fill.low{background:#b03020;animation:pulse 2s infinite}
+.feed-schedule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.feed-schedule-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.feed-schedule-pen{font-weight:600;font-size:14px;color:var(--gold);margin-bottom:10px}
+.feed-schedule-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px}
+.feed-schedule-row:last-child{border-bottom:none}
+.feed-schedule-time{color:var(--text3)}
+.feed-schedule-item{color:var(--text2)}
+.feed-schedule-amt{color:var(--gold);font-weight:600}
+.feed-tab-btns{display:flex;gap:8px;margin-bottom:18px}
+.feed-tab-btn{padding:7px 16px;border-radius:6px;font-size:12px;cursor:pointer;border:1px solid var(--border);color:var(--text2);background:transparent;transition:all .2s}
+.feed-tab-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(212,168,67,.1)}
+
+/* ─── IMPROVED MOBILE CSS ─── */
+@media(max-width:768px){
+  .fin-kpis{grid-template-columns:1fr 1fr}
+  .fin-kpi-val{font-size:20px}
+  .sale-cards{grid-template-columns:1fr}
+  .sale-total-bar{flex-wrap:wrap;gap:10px}
+  .feed-inventory{grid-template-columns:1fr 1fr}
+  .feed-schedule-grid{grid-template-columns:1fr}
+  .fin-bar-lbl{width:55px;font-size:10px}
+  .fin-bar-val{width:55px}
+  .fin-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .fin-cat-pills{gap:4px}
+  .fin-cat-pill{padding:4px 9px;font-size:10px}
+}
+@media(max-width:480px){
+  .fin-kpis{grid-template-columns:1fr 1fr}
+  .fin-kpi{padding:12px 10px}
+  .fin-kpi-val{font-size:18px}
+  .feed-inventory{grid-template-columns:1fr 1fr}
+  .sale-price{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -757,6 +861,13 @@ textarea{resize:vertical;min-height:70px}
       <div class="nav-item" onclick="nav('schedule')"><i class="icon icon-book">📅</i><span>Schedule</span></div>
       <div class="nav-item" onclick="nav('payroll')"><i class="icon icon-coin">💰</i><span>Payroll</span></div>
       <div class="nav-item" onclick="nav('training')"><i class="icon icon-glow">🎓</i><span>Training</span></div>
+    </div>
+    <div class="nav-sep"></div>
+    <div class="nav-section">
+      <div class="nav-label">Financials</div>
+      <div class="nav-item" onclick="nav('financials')"><i class="icon icon-coin">💵</i><span>Income &amp; Expenses</span></div>
+      <div class="nav-item" onclick="nav('sales')"><i class="icon icon-sparkle">🏆</i><span>Sales &amp; Auctions</span></div>
+      <div class="nav-item" onclick="nav('feed')"><i class="icon icon-bounce">🌾</i><span>Feed Management</span></div>
     </div>
     <div class="nav-sep"></div>
     <div class="nav-item" onclick="nav('compliance')"><i class="icon icon-glow">🛡ï¸</i><span>Compliance</span></div>
@@ -1536,6 +1647,9 @@ function refresh(p){
   if(p==='schedule')renderSchedule();
   if(p==='payroll')renderPayroll();
   if(p==='training')renderTraining();
+  if(p==='financials')renderFinancials();
+  if(p==='sales')renderSales();
+  if(p==='feed')renderFeed();
 }
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -2165,7 +2279,234 @@ function renderLanding(){
       <img src="${s.img}" alt="${s.name}" style="width:66px;height:66px;border-radius:50%;object-fit:cover;border:1px solid var(--border2);display:block;margin:0 auto 6px" loading="lazy" onerror="this.style.display='none'">
       <div style="font-size:11px;color:var(--text2);font-family:'Cinzel',serif">${s.name}</div>
       <div style="font-size:10px;color:var(--text3)">${s.desc}</div>
-    </div>`).join('');
+    
+
+<!-- ══════════════════════ FINANCIALS ══════════════════════ -->
+<div class="page" id="page-financials">
+  <div class="page-hero" style="background:linear-gradient(135deg,#0d1a0a 0%,#1a2e10 100%);min-height:120px">
+    <div class="page-hero-content">
+      <div class="page-hero-title">💵 Income &amp; Expenses</div>
+      <div class="page-hero-sub">Ranch financial records &amp; P&amp;L tracking</div>
+    </div>
+    <div class="page-hero-action">
+      <button class="btn btn-gold" onclick="openModal('fin-modal')">➕ Add Transaction</button>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="fin-kpis" id="fin-kpis"></div>
+    <div class="fin-cat-pills" id="fin-cat-pills">
+      <div class="fin-cat-pill active" onclick="filterFin(this,'all')">All</div>
+      <div class="fin-cat-pill" onclick="filterFin(this,'income')">Income</div>
+      <div class="fin-cat-pill" onclick="filterFin(this,'expense')">Expense</div>
+      <div class="fin-cat-pill" onclick="filterFin(this,'sale')">Animal Sales</div>
+    </div>
+    <!-- Monthly bar chart -->
+    <div class="card" style="margin-bottom:18px">
+      <div class="card-hdr"><div class="card-title">📊 Monthly Overview</div></div>
+      <div id="fin-chart"></div>
+    </div>
+    <!-- Transactions table -->
+    <div class="card">
+      <div class="card-hdr">
+        <div class="card-title">Transactions</div>
+        <button class="btn btn-sm btn-outline" onclick="exportFinCSV()">⬇ Export CSV</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="fin-table" id="fin-table">
+          <thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Type</th><th>Amount</th><th></th></tr></thead>
+          <tbody id="fin-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Financials Modal -->
+<div class="modal-overlay" id="fin-modal">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Add Transaction</div><button class="modal-close" onclick="closeModal('fin-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Type</label><select id="fin-type" onchange="updateFinCategories()">
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+          <option value="sale">Animal Sale</option>
+        </select></div>
+        <div class="form-group"><label>Category</label><select id="fin-category">
+          <option>Feed &amp; Supplies</option><option>Veterinary</option><option>Equipment</option>
+          <option>Labor</option><option>Utilities</option><option>Breeding Fee</option>
+          <option>Animal Purchase</option><option>Other</option>
+        </select></div>
+        <div class="form-group"><label>Date</label><input type="date" id="fin-date"></div>
+        <div class="form-group"><label>Amount ($)</label><input type="number" id="fin-amount" placeholder="0.00" step="0.01" min="0"></div>
+        <div class="form-group form-group-full"><label>Description</label><input type="text" id="fin-desc" placeholder="Brief description..."></div>
+        <div class="form-group form-group-full"><label>Notes</label><textarea id="fin-notes" rows="2" placeholder="Additional notes..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('fin-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveFin()">Save Transaction</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SALES & AUCTIONS ══════════════════════ -->
+<div class="page" id="page-sales">
+  <div class="page-hero" style="background:linear-gradient(135deg,#1a1000 0%,#2a1c00 100%);min-height:120px">
+    <div class="page-hero-content">
+      <div class="page-hero-title">🏆 Sales &amp; Auctions</div>
+      <div class="page-hero-sub">Track animal sales, buyer contacts &amp; auction records</div>
+    </div>
+    <div class="page-hero-action">
+      <button class="btn btn-gold" onclick="openModal('sale-modal')">➕ Record Sale</button>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="sale-total-bar" id="sale-totals">
+      <div class="sale-total-item"><div class="sale-total-lbl">Total Sales</div><div class="sale-total-num" id="st-total">$0</div></div>
+      <div class="sale-total-item"><div class="sale-total-lbl">This Year</div><div class="sale-total-num" id="st-year">$0</div></div>
+      <div class="sale-total-item"><div class="sale-total-lbl">Animals Sold</div><div class="sale-total-num" id="st-count">0</div></div>
+      <div class="sale-total-item"><div class="sale-total-lbl">Avg Price</div><div class="sale-total-num" id="st-avg">$0</div></div>
+    </div>
+    <div class="sale-cards" id="sale-cards"></div>
+  </div>
+</div>
+<!-- Sale Modal -->
+<div class="modal-overlay" id="sale-modal">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Record Animal Sale</div><button class="modal-close" onclick="closeModal('sale-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Animal Tag / Name</label><input type="text" id="sale-animal" placeholder="Tag # or name"></div>
+        <div class="form-group"><label>Species</label><select id="sale-species">
+          <option>Fallow Deer</option><option>Blackbuck</option><option>Axis Deer</option>
+          <option>Whitetail Deer</option><option>Elk</option><option>Other</option>
+        </select></div>
+        <div class="form-group"><label>Sale Date</label><input type="date" id="sale-date"></div>
+        <div class="form-group"><label>Sale Price ($)</label><input type="number" id="sale-price" placeholder="0.00" step="0.01" min="0"></div>
+        <div class="form-group"><label>Buyer Name</label><input type="text" id="sale-buyer" placeholder="Buyer full name"></div>
+        <div class="form-group"><label>Buyer Phone</label><input type="tel" id="sale-phone" placeholder="(555) 000-0000"></div>
+        <div class="form-group"><label>Sale Type</label><select id="sale-type">
+          <option>Private Sale</option><option>Auction</option><option>Lease</option><option>Donation</option>
+        </select></div>
+        <div class="form-group"><label>Status</label><select id="sale-status">
+          <option value="sold">Sold</option><option value="pending">Pending</option><option value="reserved">Reserved</option>
+        </select></div>
+        <div class="form-group form-group-full"><label>Notes</label><textarea id="sale-notes" rows="2" placeholder="Transport details, conditions..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('sale-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveSale()">Record Sale</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FEED MANAGEMENT ══════════════════════ -->
+<div class="page" id="page-feed">
+  <div class="page-hero" style="background:linear-gradient(135deg,#0a1a05 0%,#142810 100%);min-height:120px">
+    <div class="page-hero-content">
+      <div class="page-hero-title">🌾 Feed Management</div>
+      <div class="page-hero-sub">Inventory, feeding schedules &amp; cost tracking</div>
+    </div>
+    <div class="page-hero-action">
+      <button class="btn btn-gold" onclick="openModal('feed-modal')">➕ Update Inventory</button>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="feed-tab-btns">
+      <button class="feed-tab-btn active" onclick="feedTab(this,'inventory')">📦 Inventory</button>
+      <button class="feed-tab-btn" onclick="feedTab(this,'schedule')">📅 Schedules</button>
+      <button class="feed-tab-btn" onclick="feedTab(this,'log')">📋 Feed Log</button>
+    </div>
+    <div id="feed-inventory-tab">
+      <div class="feed-inventory" id="feed-inventory-grid"></div>
+    </div>
+    <div id="feed-schedule-tab" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <div style="font-size:13px;color:var(--text2)">Feeding schedules by pen</div>
+        <button class="btn btn-sm btn-outline" onclick="openModal('feed-sched-modal')">➕ Add Schedule</button>
+      </div>
+      <div class="feed-schedule-grid" id="feed-schedule-grid"></div>
+    </div>
+    <div id="feed-log-tab" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <div style="font-size:13px;color:var(--text2)">Daily feeding records</div>
+        <button class="btn btn-sm btn-outline" onclick="openModal('feed-log-modal')">➕ Log Feeding</button>
+      </div>
+      <div id="feed-log-list"></div>
+    </div>
+  </div>
+</div>
+<!-- Feed Modal -->
+<div class="modal-overlay" id="feed-modal">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Update Feed Inventory</div><button class="modal-close" onclick="closeModal('feed-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Feed Type</label><select id="feed-type">
+          <option>Coastal Hay</option><option>Alfalfa Hay</option><option>Bermuda Hay</option>
+          <option>Corn</option><option>Oats</option><option>Deer Pellets</option>
+          <option>Protein Supplement</option><option>Mineral Block</option><option>Salt Block</option><option>Other</option>
+        </select></div>
+        <div class="form-group"><label>Category</label><select id="feed-cat">
+          <option value="hay">Hay</option><option value="grain">Grain</option>
+          <option value="supplement">Supplement</option><option value="mineral">Mineral</option>
+        </select></div>
+        <div class="form-group"><label>Quantity</label><input type="number" id="feed-qty" placeholder="0" min="0" step="0.1"></div>
+        <div class="form-group"><label>Unit</label><select id="feed-unit">
+          <option>bales</option><option>lbs</option><option>bags</option><option>tons</option><option>gallons</option>
+        </select></div>
+        <div class="form-group"><label>Min Threshold (alert)</label><input type="number" id="feed-min" placeholder="0" min="0"></div>
+        <div class="form-group"><label>Cost per Unit ($)</label><input type="number" id="feed-cost" placeholder="0.00" step="0.01" min="0"></div>
+        <div class="form-group form-group-full"><label>Supplier / Notes</label><input type="text" id="feed-supplier" placeholder="Supplier name or notes..."></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('feed-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveFeedItem()">Save Inventory</button>
+    </div>
+  </div>
+</div>
+<!-- Feed Schedule Modal -->
+<div class="modal-overlay" id="feed-sched-modal">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Add Feeding Schedule</div><button class="modal-close" onclick="closeModal('feed-sched-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Pen / Location</label><input type="text" id="fsched-pen" placeholder="Pen name or number"></div>
+        <div class="form-group"><label>Feed Type</label><input type="text" id="fsched-feed" placeholder="e.g. Coastal Hay"></div>
+        <div class="form-group"><label>Morning Feed Time</label><input type="time" id="fsched-am"></div>
+        <div class="form-group"><label>Amount (AM)</label><input type="text" id="fsched-am-amt" placeholder="e.g. 2 bales"></div>
+        <div class="form-group"><label>Evening Feed Time</label><input type="time" id="fsched-pm"></div>
+        <div class="form-group"><label>Amount (PM)</label><input type="text" id="fsched-pm-amt" placeholder="e.g. 2 bales"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('feed-sched-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveFeedSched()">Save Schedule</button>
+    </div>
+  </div>
+</div>
+<!-- Feed Log Modal -->
+<div class="modal-overlay" id="feed-log-modal">
+  <div class="modal">
+    <div class="modal-hdr"><div class="modal-title">Log Feeding</div><button class="modal-close" onclick="closeModal('feed-log-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Date &amp; Time</label><input type="datetime-local" id="flog-dt"></div>
+        <div class="form-group"><label>Staff Name</label><input type="text" id="flog-staff" placeholder="Who fed the animals?"></div>
+        <div class="form-group"><label>Pen / Location</label><input type="text" id="flog-pen" placeholder="Pen name"></div>
+        <div class="form-group"><label>Feed Used</label><input type="text" id="flog-feed" placeholder="e.g. 3 bales coastal hay"></div>
+        <div class="form-group form-group-full"><label>Notes</label><textarea id="flog-notes" rows="2" placeholder="Any observations..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('feed-log-modal')">Cancel</button>
+      <button class="btn btn-gold" onclick="saveFeedLog()">Save Log</button>
+    </div>
+  </div>
+</div>
+</div>`).join('');
   const lsEl=document.getElementById('ls-animals');
   if(lsEl)lsEl.textContent=DB.get('animals').length||7;
 }
@@ -2293,6 +2634,442 @@ function toggleVoice(){
   startVoice(null);
 }
 
+
+/* ══════════════════════════════════════
+   API SYNC LAYER
+   Auto-detects Railway backend; falls back to localStorage
+══════════════════════════════════════ */
+const API = {
+  base: window.location.origin,
+  dot: null,
+  online: false,
+
+  init() {
+    this.dot = document.getElementById('api-sync-dot');
+    this.checkHealth();
+    // refresh token every 5 min
+    setInterval(() => this.checkHealth(), 300000);
+  },
+
+  async checkHealth() {
+    try {
+      const r = await fetch(this.base + '/health', {signal: AbortSignal.timeout(3000)});
+      if (r.ok) {
+        this.online = true;
+        if (this.dot) { this.dot.className = 'online'; this.dot.title = 'API connected'; }
+        return true;
+      }
+    } catch(e) {}
+    this.online = false;
+    if (this.dot) { this.dot.className = ''; this.dot.title = 'Offline – using local storage'; }
+    return false;
+  },
+
+  async get(path) {
+    if (!this.online) return null;
+    try {
+      const r = await fetch(this.base + path);
+      if (!r.ok) return null;
+      return await r.json();
+    } catch(e) { return null; }
+  },
+
+  async post(path, data) {
+    if (!this.online) return null;
+    if (this.dot) this.dot.className = 'syncing';
+    try {
+      const r = await fetch(this.base + path, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const result = r.ok ? await r.json() : null;
+      if (this.dot) this.dot.className = result ? 'online' : 'error';
+      return result;
+    } catch(e) {
+      if (this.dot) this.dot.className = 'error';
+      return null;
+    }
+  }
+};
+
+// Initialize API on load
+document.addEventListener('DOMContentLoaded', () => API.init());
+
+/* ══════════════════════════════════════
+   FINANCIALS
+══════════════════════════════════════ */
+let _finFilter = 'all';
+
+function renderFinancials() {
+  const recs = DB.getArr('financials');
+  // KPIs
+  const income  = recs.filter(r=>r.type==='income').reduce((s,r)=>s+Number(r.amount||0),0);
+  const expense = recs.filter(r=>r.type==='expense').reduce((s,r)=>s+Number(r.amount||0),0);
+  const sales   = recs.filter(r=>r.type==='sale').reduce((s,r)=>s+Number(r.amount||0),0);
+  const net     = income + sales - expense;
+  const fmt = n => '$' + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+  document.getElementById('fin-kpis').innerHTML = `
+    <div class="fin-kpi"><div class="fin-kpi-lbl">Total Income</div><div class="fin-kpi-val positive">${fmt(income)}</div></div>
+    <div class="fin-kpi"><div class="fin-kpi-lbl">Animal Sales</div><div class="fin-kpi-val positive">${fmt(sales)}</div></div>
+    <div class="fin-kpi"><div class="fin-kpi-lbl">Total Expenses</div><div class="fin-kpi-val negative">${fmt(expense)}</div></div>
+    <div class="fin-kpi"><div class="fin-kpi-lbl">Net P&L</div><div class="fin-kpi-val ${net>=0?'positive':'negative'}">${net<0?'-':''}${fmt(net)}</div></div>
+  `;
+
+  // Monthly chart (last 6 months)
+  const months = [];
+  for (let i=5; i>=0; i--) {
+    const d = new Date(); d.setMonth(d.getMonth()-i);
+    const key = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+    const lbl = d.toLocaleString('en-US',{month:'short'});
+    const mo_inc = recs.filter(r=>r.type==='income'&&r.date&&r.date.startsWith(key)).reduce((s,r)=>s+Number(r.amount||0),0);
+    const mo_exp = recs.filter(r=>r.type==='expense'&&r.date&&r.date.startsWith(key)).reduce((s,r)=>s+Number(r.amount||0),0);
+    const mo_sale = recs.filter(r=>r.type==='sale'&&r.date&&r.date.startsWith(key)).reduce((s,r)=>s+Number(r.amount||0),0);
+    months.push({lbl, inc:mo_inc+mo_sale, exp:mo_exp});
+  }
+  const maxVal = Math.max(...months.flatMap(m=>[m.inc,m.exp]), 1);
+  document.getElementById('fin-chart').innerHTML = '<div class="fin-chart-bar-wrap">' +
+    months.map(m=>`
+      <div class="fin-bar-row">
+        <div class="fin-bar-lbl">${m.lbl}</div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+          <div class="fin-bar-track"><div class="fin-bar-fill income" style="width:${Math.round(m.inc/maxVal*100)}%"></div></div>
+          <div class="fin-bar-track"><div class="fin-bar-fill expense" style="width:${Math.round(m.exp/maxVal*100)}%"></div></div>
+        </div>
+        <div class="fin-bar-val" style="font-size:10px;color:var(--text3)">+$${(m.inc/1000).toFixed(1)}k<br>-$${(m.exp/1000).toFixed(1)}k</div>
+      </div>`
+    ).join('') + '</div>';
+
+  // Table
+  const filtered = _finFilter==='all' ? recs : recs.filter(r=>r.type===_finFilter);
+  const sorted = [...filtered].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const badgeMap = {income:'fin-badge-income',expense:'fin-badge-expense',sale:'fin-badge-sale'};
+  const typeLabel = {income:'Income',expense:'Expense',sale:'Sale'};
+  document.getElementById('fin-tbody').innerHTML = sorted.length ? sorted.map((r,i)=>`
+    <tr>
+      <td style="white-space:nowrap;color:var(--text3)">${r.date||'—'}</td>
+      <td>${r.category||'—'}</td>
+      <td>${r.desc||'—'}</td>
+      <td><span class="fin-badge ${badgeMap[r.type]||''}">${typeLabel[r.type]||r.type}</span></td>
+      <td style="font-weight:600;color:${r.type==='expense'?'var(--red)':'var(--success)'}">
+        ${r.type==='expense'?'-':'+'} $${Number(r.amount||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+      </td>
+      <td><button class="btn btn-sm" style="padding:2px 8px;font-size:10px" onclick="delFin(${i})">Del</button></td>
+    </tr>`).join('') : '<tr><td colspan="6" style="text-align:center;color:var(--text3);padding:28px">No transactions yet. Add your first transaction above.</td></tr>';
+}
+
+function filterFin(el, type) {
+  _finFilter = type;
+  document.querySelectorAll('.fin-cat-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  renderFinancials();
+}
+
+function updateFinCategories() {
+  const t = document.getElementById('fin-type').value;
+  const cat = document.getElementById('fin-category');
+  const opts = {
+    income: ['Breeding Fees','Stud Service','Hunt Lease','Government Grant','Other Income'],
+    expense: ['Feed & Supplies','Veterinary','Equipment','Labor','Utilities','Fencing','Insurance','Fuel','Other Expense'],
+    sale: ['Deer Sale','Bull Sale','Doe Sale','Fawn Sale','Auction','Private Treaty']
+  };
+  cat.innerHTML = (opts[t]||opts.expense).map(o=>`<option>${o}</option>`).join('');
+}
+
+function saveFin() {
+  const rec = {
+    type: document.getElementById('fin-type').value,
+    category: document.getElementById('fin-category').value,
+    date: document.getElementById('fin-date').value,
+    amount: parseFloat(document.getElementById('fin-amount').value)||0,
+    desc: document.getElementById('fin-desc').value.trim(),
+    notes: document.getElementById('fin-notes').value.trim(),
+    id: Date.now()
+  };
+  if (!rec.amount) { showToast('Enter an amount'); return; }
+  if (!rec.date) { showToast('Select a date'); return; }
+  const arr = DB.getArr('financials');
+  arr.push(rec);
+  DB.setArr('financials', arr);
+  closeModal('fin-modal');
+  document.getElementById('fin-amount').value='';
+  document.getElementById('fin-desc').value='';
+  document.getElementById('fin-notes').value='';
+  showToast('Transaction saved!');
+  renderFinancials();
+  // Also sync to API if online
+  API.post('/financials', rec);
+}
+
+function delFin(idx) {
+  if (!confirm('Delete this transaction?')) return;
+  const arr = DB.getArr('financials');
+  const filtered = (_finFilter==='all' ? arr : arr.filter(r=>r.type===_finFilter));
+  const sorted = [...filtered].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const toRemove = sorted[idx];
+  const newArr = arr.filter(r=>r.id!==toRemove.id);
+  DB.setArr('financials', newArr);
+  renderFinancials();
+}
+
+function exportFinCSV() {
+  const recs = DB.getArr('financials');
+  const rows = [['Date','Type','Category','Description','Amount','Notes']];
+  recs.forEach(r=>rows.push([r.date||'',r.type||'',r.category||'',r.desc||'',r.amount||0,r.notes||'']));
+  const csv = rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob = new Blob([csv],{type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'tanc_financials.csv';
+  a.click();
+}
+
+/* ══════════════════════════════════════
+   SALES & AUCTIONS
+══════════════════════════════════════ */
+function renderSales() {
+  const sales = DB.getArr('sales');
+  const total = sales.reduce((s,r)=>s+Number(r.price||0),0);
+  const yr = new Date().getFullYear();
+  const yearSales = sales.filter(r=>r.date&&r.date.startsWith(String(yr)));
+  const yearTotal = yearSales.reduce((s,r)=>s+Number(r.price||0),0);
+  const avg = sales.length ? total/sales.length : 0;
+  const fmt = n => '$' + n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('st-total').textContent = fmt(total);
+  document.getElementById('st-year').textContent = fmt(yearTotal);
+  document.getElementById('st-count').textContent = sales.length;
+  document.getElementById('st-avg').textContent = fmt(avg);
+
+  const statusMap = {sold:'sale-status-sold',pending:'sale-status-pending',reserved:'sale-status-reserved'};
+  const sorted = [...sales].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  document.getElementById('sale-cards').innerHTML = sorted.length ? sorted.map((s,i)=>`
+    <div class="sale-card">
+      <div class="sale-card-hdr">
+        <div>
+          <div class="sale-animal-name">${s.animal||'Unknown'} <span style="font-size:11px;color:var(--text3)">(${s.species||''})</span></div>
+          <div class="sale-meta">${s.type||'Sale'} &bull; ${s.date||'—'}</div>
+        </div>
+        <div>
+          <div class="sale-price">$${Number(s.price||0).toLocaleString()}</div>
+          <div style="text-align:right;margin-top:4px"><span class="sale-status ${statusMap[s.status]||'sale-status-sold'}">${(s.status||'sold').toUpperCase()}</span></div>
+        </div>
+      </div>
+      <div class="sale-details">
+        <div class="sale-detail-item"><div class="sale-detail-label">Buyer</div><div class="sale-detail-val">${s.buyer||'—'}</div></div>
+        <div class="sale-detail-item"><div class="sale-detail-label">Phone</div><div class="sale-detail-val">${s.phone||'—'}</div></div>
+        <div class="sale-detail-item"><div class="sale-detail-label">Sale Type</div><div class="sale-detail-val">${s.type||'—'}</div></div>
+        <div class="sale-detail-item">
+          <button class="btn btn-sm" style="margin-top:4px;font-size:10px;padding:3px 8px" onclick="delSale(${i})">Delete</button>
+        </div>
+      </div>
+      ${s.notes?`<div style="font-size:11px;color:var(--text3);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">${s.notes}</div>`:''}
+    </div>`).join('') : `<div style="text-align:center;color:var(--text3);padding:48px;grid-column:1/-1">No sales recorded yet. Use the button above to add your first sale.</div>`;
+}
+
+function saveSale() {
+  const rec = {
+    animal:  document.getElementById('sale-animal').value.trim(),
+    species: document.getElementById('sale-species').value,
+    date:    document.getElementById('sale-date').value,
+    price:   parseFloat(document.getElementById('sale-price').value)||0,
+    buyer:   document.getElementById('sale-buyer').value.trim(),
+    phone:   document.getElementById('sale-phone').value.trim(),
+    type:    document.getElementById('sale-type').value,
+    status:  document.getElementById('sale-status').value,
+    notes:   document.getElementById('sale-notes').value.trim(),
+    id: Date.now()
+  };
+  if (!rec.animal) { showToast('Enter animal tag or name'); return; }
+  if (!rec.price)  { showToast('Enter sale price'); return; }
+  const arr = DB.getArr('sales');
+  arr.push(rec);
+  DB.setArr('sales', arr);
+  // Also add to financials as a sale entry
+  const fin = DB.getArr('financials');
+  fin.push({type:'sale',category:'Animal Sale',date:rec.date,amount:rec.price,desc:`Sale: ${rec.animal} to ${rec.buyer||'buyer'}`,id:Date.now()});
+  DB.setArr('financials', fin);
+  closeModal('sale-modal');
+  showToast('Sale recorded!');
+  renderSales();
+  API.post('/sales', rec);
+}
+
+function delSale(idx) {
+  if (!confirm('Delete this sale record?')) return;
+  const sales = DB.getArr('sales');
+  const sorted = [...sales].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const toRemove = sorted[idx];
+  DB.setArr('sales', sales.filter(s=>s.id!==toRemove.id));
+  renderSales();
+}
+
+/* ══════════════════════════════════════
+   FEED MANAGEMENT
+══════════════════════════════════════ */
+let _feedTab = 'inventory';
+
+function feedTab(btn, tab) {
+  _feedTab = tab;
+  document.querySelectorAll('.feed-tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  ['inventory','schedule','log'].forEach(t=>{
+    const el = document.getElementById('feed-'+t+'-tab');
+    if (el) el.style.display = t===tab ? '' : 'none';
+  });
+  renderFeed();
+}
+
+function renderFeed() {
+  if (_feedTab==='inventory') renderFeedInventory();
+  else if (_feedTab==='schedule') renderFeedSchedule();
+  else if (_feedTab==='log') renderFeedLog();
+}
+
+function renderFeedInventory() {
+  const items = DB.getArr('feed_inventory');
+  const grid = document.getElementById('feed-inventory-grid');
+  if (!grid) return;
+  if (!items.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text3);padding:48px">No feed inventory yet. Add items above.</div>`;
+    return;
+  }
+  grid.innerHTML = items.map((item,i)=>{
+    const pct = item.min ? Math.min(100, Math.round(item.qty/item.min*50)) : 75;
+    const lvl = pct < 25 ? 'low' : pct < 60 ? 'med' : 'high';
+    return `<div class="feed-item ${item.cat||'hay'}">
+      <div class="feed-item-name">${item.type||'Feed'}</div>
+      <div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px">${item.cat||'hay'}</div>
+      <div class="feed-item-qty">${item.qty||0} <span class="feed-item-unit">${item.unit||'units'}</span></div>
+      ${item.cost?`<div style="font-size:11px;color:var(--text3)">$${item.cost}/${item.unit||'unit'}</div>`:''}
+      ${item.supplier?`<div style="font-size:11px;color:var(--text3)">${item.supplier}</div>`:''}
+      <div class="feed-level-bar"><div class="feed-level-fill ${lvl}" style="width:${pct}%"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px">
+        <div style="font-size:10px;color:var(--text3)">${pct<30?'⚠️ LOW STOCK':pct<60?'Moderate':'Good stock'}</div>
+        <button class="btn btn-sm" style="font-size:9px;padding:2px 6px" onclick="delFeedItem(${i})">Del</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderFeedSchedule() {
+  const scheds = DB.getArr('feed_schedules');
+  const grid = document.getElementById('feed-schedule-grid');
+  if (!grid) return;
+  if (!scheds.length) {
+    grid.innerHTML = `<div style="text-align:center;color:var(--text3);padding:48px">No schedules yet. Add one above.</div>`;
+    return;
+  }
+  grid.innerHTML = scheds.map((s,i)=>`
+    <div class="feed-schedule-card">
+      <div class="feed-schedule-pen">🏕️ ${s.pen||'Pen'}</div>
+      ${s.am?`<div class="feed-schedule-row"><span class="feed-schedule-time">☀️ ${s.am}</span><span class="feed-schedule-item">${s.feed||''}</span><span class="feed-schedule-amt">${s.amAmt||''}</span></div>`:''}
+      ${s.pm?`<div class="feed-schedule-row"><span class="feed-schedule-time">🌙 ${s.pm}</span><span class="feed-schedule-item">${s.feed||''}</span><span class="feed-schedule-amt">${s.pmAmt||''}</span></div>`:''}
+      <div style="text-align:right;margin-top:8px"><button class="btn btn-sm" style="font-size:9px;padding:2px 6px" onclick="delFeedSched(${i})">Del</button></div>
+    </div>`).join('');
+}
+
+function renderFeedLog() {
+  const logs = DB.getArr('feed_logs');
+  const list = document.getElementById('feed-log-list');
+  if (!list) return;
+  const sorted = [...logs].sort((a,b)=>(b.dt||'').localeCompare(a.dt||''));
+  list.innerHTML = sorted.length ? sorted.map((l,i)=>`
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-weight:600;font-size:13px">${l.pen||'—'} <span style="font-size:11px;font-weight:400;color:var(--text3)">· ${l.dt?l.dt.replace('T',' ').slice(0,16):'—'}</span></div>
+        <div style="font-size:12px;color:var(--text2);margin-top:4px">${l.feed||'—'}</div>
+        ${l.staff?`<div style="font-size:11px;color:var(--text3);margin-top:2px">👤 ${l.staff}</div>`:''}
+        ${l.notes?`<div style="font-size:11px;color:var(--text3);margin-top:4px">${l.notes}</div>`:''}
+      </div>
+      <button class="btn btn-sm" style="font-size:9px;padding:2px 6px;flex-shrink:0" onclick="delFeedLog(${i})">Del</button>
+    </div>`).join('') : `<div style="text-align:center;color:var(--text3);padding:48px">No feed logs yet.</div>`;
+}
+
+function saveFeedItem() {
+  const rec = {
+    type: document.getElementById('feed-type').value,
+    cat:  document.getElementById('feed-cat').value,
+    qty:  parseFloat(document.getElementById('feed-qty').value)||0,
+    unit: document.getElementById('feed-unit').value,
+    min:  parseFloat(document.getElementById('feed-min').value)||0,
+    cost: parseFloat(document.getElementById('feed-cost').value)||0,
+    supplier: document.getElementById('feed-supplier').value.trim(),
+    id: Date.now()
+  };
+  // Merge with existing item of same type, or add new
+  const arr = DB.getArr('feed_inventory');
+  const existing = arr.findIndex(i=>i.type===rec.type);
+  if (existing >= 0) {
+    arr[existing] = {...arr[existing], ...rec, qty: arr[existing].qty + rec.qty};
+  } else {
+    arr.push(rec);
+  }
+  DB.setArr('feed_inventory', arr);
+  closeModal('feed-modal');
+  showToast('Inventory updated!');
+  renderFeed();
+}
+
+function delFeedItem(idx) {
+  const arr = DB.getArr('feed_inventory');
+  arr.splice(idx,1);
+  DB.setArr('feed_inventory', arr);
+  renderFeed();
+}
+
+function saveFeedSched() {
+  const rec = {
+    pen:   document.getElementById('fsched-pen').value.trim(),
+    feed:  document.getElementById('fsched-feed').value.trim(),
+    am:    document.getElementById('fsched-am').value,
+    amAmt: document.getElementById('fsched-am-amt').value.trim(),
+    pm:    document.getElementById('fsched-pm').value,
+    pmAmt: document.getElementById('fsched-pm-amt').value.trim(),
+    id: Date.now()
+  };
+  if (!rec.pen) { showToast('Enter a pen name'); return; }
+  const arr = DB.getArr('feed_schedules');
+  arr.push(rec);
+  DB.setArr('feed_schedules', arr);
+  closeModal('feed-sched-modal');
+  showToast('Schedule saved!');
+  renderFeed();
+}
+
+function delFeedSched(idx) {
+  const arr = DB.getArr('feed_schedules');
+  arr.splice(idx,1);
+  DB.setArr('feed_schedules', arr);
+  renderFeed();
+}
+
+function saveFeedLog() {
+  const rec = {
+    dt:    document.getElementById('flog-dt').value,
+    staff: document.getElementById('flog-staff').value.trim(),
+    pen:   document.getElementById('flog-pen').value.trim(),
+    feed:  document.getElementById('flog-feed').value.trim(),
+    notes: document.getElementById('flog-notes').value.trim(),
+    id: Date.now()
+  };
+  if (!rec.pen) { showToast('Enter a pen'); return; }
+  const arr = DB.getArr('feed_logs');
+  arr.push(rec);
+  DB.setArr('feed_logs', arr);
+  closeModal('feed-log-modal');
+  showToast('Feeding logged!');
+  renderFeed();
+}
+
+function delFeedLog(idx) {
+  const logs = DB.getArr('feed_logs');
+  const sorted = [...logs].sort((a,b)=>(b.dt||'').localeCompare(a.dt||''));
+  const toRemove = sorted[idx];
+  DB.setArr('feed_logs', logs.filter(l=>l.id!==toRemove.id));
+  renderFeed();
+}
+
 </script>
 
 <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -2319,6 +3096,9 @@ function toggleVoice(){
       <div class="mob-item" onclick="mobNav('training')"><div class="mob-item-ico">🎓</div><div class="mob-item-lbl">Training</div></div>
       <div class="mob-item" onclick="mobNav('documents')"><div class="mob-item-ico">📄</div><div class="mob-item-lbl">Documents</div></div>
       <div class="mob-item" onclick="mobNav('compliance')"><div class="mob-item-ico">🛡ï¸</div><div class="mob-item-lbl">Compliance</div></div>
+      <div class="mob-item" onclick="mobNav('financials')"><div class="mob-item-ico">💵</div><div class="mob-item-lbl">Finances</div></div>
+      <div class="mob-item" onclick="mobNav('sales')"><div class="mob-item-ico">🏆</div><div class="mob-item-lbl">Sales</div></div>
+      <div class="mob-item" onclick="mobNav('feed')"><div class="mob-item-ico">🌾</div><div class="mob-item-lbl">Feed</div></div>
       <div class="mob-item" onclick="mobNav('reports')"><div class="mob-item-ico">📊</div><div class="mob-item-lbl">Reports</div></div>
       <div class="mob-item" onclick="mobNav('simulate')"><div class="mob-item-ico">✨</div><div class="mob-item-lbl">Simulate</div></div>
     </div>
